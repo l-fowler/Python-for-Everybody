@@ -1,29 +1,63 @@
-#Exercise 3: Write a program to prompt for a score between 0.0 and 1.0. If the score is out of range, print an error message. If the score is between 0.0 and 1.0, print a grade using the following table:
-# Score   Grade
-#>= 0.9     A
-#>= 0.8     B
-#>= 0.7     C
-#>= 0.6     D
-# < 0.6     F
-def score(num):
-    if num >=0.9:
+"""
+Exercise 7: Rewrite the grade program from the previous chapter using a function
+called computegrade that takes a score as its parameter and returns a grade as a
+string.
+
+Score   Grade
+>= 0.9     A
+>= 0.8     B
+>= 0.7     C
+>= 0.6     D
+ < 0.6     F
+
+Enter score: 0.95
+A
+
+Enter score: perfect
+Bad score
+
+Enter score: 10.0
+Bad score
+
+Enter score: 0.75
+C
+
+Enter score: 0.5
+F
+"""
+
+# Define computegrade(score)
+# Include if/else for scores and grades
+def computegrade(score):
+    if score >=0.9:
         grade = "Grade: A"
-    elif num >= 0.8:
+    elif score >= 0.8:
         grade = "Grade: B"
-    elif num >= 0.7:
+    elif score >= 0.7:
         grade = "Grade: C"
-    elif num >= 0.6:
+    elif score >= 0.6:
         grade = "Grade: D"
-    elif num <0.6:
+    elif score <0.6:
         grade = "Grade: F"
     return grade
 
-s = input("Enter score between 0.0 and 1.0: ")
+# Input score
+score = input("Enter score between 0.0 and 1.0: ")
+
+# Try and Except
+# Try float(score)
 try:
-    s = float(s)
+    score = float(score)
+# Except for int or str
 except:
     print("Bad score")
     quit()
 
-grade = score(s)
+# Print "Bad score" if score > 1.0
+if score > 1.0:
+    print("Bad score")
+    quit()
+
+# Call function computegrade(score)
+grade = computegrade(score)
 print(grade)
